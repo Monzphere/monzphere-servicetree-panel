@@ -4,7 +4,7 @@ Hierarchical service tree visualisation for Grafana, with inline SLA / SLO indic
 
 Built by [Monzphere](https://monzphere.com) for teams that monitor business services in Zabbix, Prometheus, SQL or any other Grafana data source.
 
-![Service Tree Panel](src/img/screenshot-dashboard.png)
+![Service Tree Panel](https://raw.githubusercontent.com/Monzphere/monzphere-servicetree-panel/main/src/img/screenshot-dashboard.png)
 
 ## Features
 
