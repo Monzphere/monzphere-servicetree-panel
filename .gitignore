@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+artifacts/
+coverage/
+.eslintcache
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test
+playwright-report/
+test-results/
+
+# Env
+.env
+.env.local

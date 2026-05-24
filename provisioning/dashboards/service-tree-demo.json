@@ -1,0 +1,70 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "id": 1,
+      "type": "monzphere-servicetree-panel",
+      "title": "Service Tree",
+      "gridPos": { "h": 16, "w": 24, "x": 0, "y": 0 },
+      "datasource": { "type": "marcusolsson-csv-datasource", "uid": "csv-demo" },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "marcusolsson-csv-datasource", "uid": "csv-demo" },
+          "source": "local",
+          "storage": "local",
+          "path": "/etc/grafana/data/services.csv",
+          "decimalSeparator": ".",
+          "delimiter": ",",
+          "header": true,
+          "ignoreUnknown": false,
+          "skipRows": 0,
+          "schema": [
+            { "name": "id",         "type": "string" },
+            { "name": "parentId",   "type": "string" },
+            { "name": "name",       "type": "string" },
+            { "name": "status",     "type": "string" },
+            { "name": "sla",        "type": "number" },
+            { "name": "slaTarget",  "type": "number" },
+            { "name": "weight",     "type": "number" }
+          ]
+        }
+      ],
+      "options": {
+        "fieldPreset": "auto",
+        "fields": {
+          "id": "id|serviceid|service_id",
+          "parentId": "parentId|parentid|parent_id|parents",
+          "name": "name|service|service_name",
+          "status": "status|severity|state",
+          "sla": "sla|sli|current_sla|uptime",
+          "slaTarget": "slaTarget|sla_target|goodsla|target",
+          "weight": "weight|priority"
+        },
+        "defaultSlaTarget": 99.9,
+        "rollupMode": "worst",
+        "defaultExpanded": true,
+        "showSlaBadge": true,
+        "showTarget": true,
+        "warnThresholdPct": 95
+      }
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": ["monzphere", "service-tree", "demo"],
+  "templating": { "list": [] },
+  "time": { "from": "now-6h", "to": "now" },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Service Tree — Demo",
+  "uid": "monzphere-servicetree-demo",
+  "version": 1,
+  "weekStart": ""
+}

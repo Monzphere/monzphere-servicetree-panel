@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-label="Service Tree example">
+  <title>Service Tree example</title>
+  <rect width="800" height="480" fill="#0B0E12"/>
+  <g font-family="Inter, system-ui, sans-serif" font-size="14" fill="#D8D9DA">
+    <text x="24" y="34" font-size="16" font-weight="600">Service Tree</text>
+    <g transform="translate(24, 70)">
+      <rect width="752" height="44" rx="4" fill="#181B1F"/>
+      <circle cx="32" cy="22" r="8" fill="#1A7F37"/>
+      <text x="56" y="27" font-weight="600">platform</text>
+      <text x="640" y="27" fill="#D8D9DA" font-family="ui-monospace,monospace">99.92% / 99.90%</text>
+    </g>
+    <g transform="translate(60, 124)">
+      <rect width="716" height="40" rx="4" fill="#11141A"/>
+      <circle cx="28" cy="20" r="7" fill="#FFB020"/>
+      <text x="48" y="25">api-gateway</text>
+      <text x="588" y="25" fill="#FFB020" font-family="ui-monospace,monospace">99.40% / 99.90%</text>
+    </g>
+    <g transform="translate(60, 172)">
+      <rect width="716" height="40" rx="4" fill="#11141A"/>
+      <circle cx="28" cy="20" r="7" fill="#1A7F37"/>
+      <text x="48" y="25">checkout</text>
+      <text x="588" y="25" fill="#1A7F37" font-family="ui-monospace,monospace">99.95% / 99.90%</text>
+    </g>
+    <g transform="translate(60, 220)">
+      <rect width="716" height="40" rx="4" fill="#11141A"/>
+      <circle cx="28" cy="20" r="7" fill="#D8423B"/>
+      <text x="48" y="25">payments-db</text>
+      <text x="588" y="25" fill="#D8423B" font-family="ui-monospace,monospace">94.10% / 99.90%</text>
+    </g>
+    <g transform="translate(96, 268)">
+      <rect width="680" height="36" rx="4" fill="#0E1116"/>
+      <circle cx="24" cy="18" r="6" fill="#D8423B"/>
+      <text x="44" y="22">primary-replica</text>
+      <text x="552" y="22" fill="#D8423B" font-family="ui-monospace,monospace">90.20% / 99.90%</text>
+    </g>
+    <g transform="translate(96, 312)">
+      <rect width="680" height="36" rx="4" fill="#0E1116"/>
+      <circle cx="24" cy="18" r="6" fill="#1A7F37"/>
+      <text x="44" y="22">read-replica-1</text>
+      <text x="552" y="22" fill="#1A7F37" font-family="ui-monospace,monospace">100.00% / 99.90%</text>
+    </g>
+    <g transform="translate(60, 360)">
+      <rect width="716" height="40" rx="4" fill="#11141A"/>
+      <circle cx="28" cy="20" r="7" fill="#1A7F37"/>
+      <text x="48" y="25">cdn</text>
+      <text x="588" y="25" fill="#1A7F37" font-family="ui-monospace,monospace">99.99% / 99.90%</text>
+    </g>
+  </g>
+</svg>

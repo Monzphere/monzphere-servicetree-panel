@@ -1,0 +1,14 @@
+id,parentId,name,status,sla,slaTarget,weight
+platform,,Platform,ok,99.92,99.9,1
+api-gw,platform,API Gateway,warning,99.4,99.9,2
+checkout,platform,Checkout,ok,99.95,99.9,3
+payments-db,checkout,Payments DB,critical,94.1,99.9,2
+primary,payments-db,Primary,critical,90.2,99.9,1
+replica-1,payments-db,Read Replica 1,ok,100,99.9,1
+replica-2,payments-db,Read Replica 2,ok,100,99.9,1
+sessions,platform,Sessions,ok,99.99,99.9,1
+cdn,platform,CDN,ok,99.99,99.9,1
+billing,platform,Billing,warning,99.5,99.9,2
+billing-db,billing,Billing DB,ok,99.96,99.9,1
+billing-api,billing,Billing API,warning,99.3,99.9,1
+auth,platform,Auth,ok,99.97,99.9,1

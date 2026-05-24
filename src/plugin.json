@@ -1,0 +1,57 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "panel",
+  "name": "Service Tree",
+  "id": "monzphere-servicetree-panel",
+  "info": {
+    "description": "Hierarchical service tree visualisation with inline SLA / SLO indicators. Roll-up status and SLA from leaf to root, with expand/collapse drill-down.",
+    "author": {
+      "name": "Monzphere",
+      "url": "https://monzphere.com"
+    },
+    "keywords": [
+      "service",
+      "sla",
+      "slo",
+      "tree",
+      "topology",
+      "zabbix",
+      "monitoring",
+      "observability"
+    ],
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "links": [
+      {
+        "name": "Website",
+        "url": "https://monzphere.com"
+      },
+      {
+        "name": "Source",
+        "url": "https://github.com/Monzphere/monzphere-servicetree-panel"
+      },
+      {
+        "name": "License",
+        "url": "https://github.com/Monzphere/monzphere-servicetree-panel/blob/main/LICENSE"
+      }
+    ],
+    "screenshots": [
+      {
+        "name": "Service tree dashboard with SLA roll-up, search and filters",
+        "path": "img/screenshot-dashboard.png"
+      },
+      {
+        "name": "Service tree status summary",
+        "path": "img/screenshot-tree.svg"
+      }
+    ],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+  "dependencies": {
+    "grafanaDependency": ">=11.0.0",
+    "plugins": []
+  }
+}
