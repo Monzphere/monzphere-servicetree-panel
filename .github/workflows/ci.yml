@@ -229,20 +229,3 @@ jobs:
       #     path: grafana-server.log
       #     retention-days: 5
 
-  publish-report:
-    if: ${{ always() && !cancelled() && needs.playwright-tests.result == 'success' }}
-    permissions:
-      contents: write
-      id-token: write
-      pull-requests: write
-    needs: [playwright-tests]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          # required for playwright-gh-pages
-          persist-credentials: true
-      - name: Publish report
-        uses: grafana/plugin-actions/playwright-gh-pages/deploy-report-pages@deploy-report-pages/v1.1.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
