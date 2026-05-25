@@ -1,22 +1,3 @@
 {
-  "extends": "@grafana/tsconfig",
-  "compilerOptions": {
-    "rootDir": "./",
-    "baseUrl": "./src",
-    "typeRoots": ["./node_modules/@types"],
-    "resolveJsonModule": true,
-    "jsx": "react",
-    "noEmit": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "isolatedModules": true,
-    "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "Bundler"
-  },
-  "include": ["src/**/*", "tests/**/*", "types/**/*", "*.ts", "*.js"],
-  "exclude": ["node_modules", "dist", "coverage", "playwright-report"]
+  "extends": "./.config/tsconfig.json"
 }

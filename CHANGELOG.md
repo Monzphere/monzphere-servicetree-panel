@@ -4,6 +4,25 @@ All notable changes to this plugin are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-05-24
+
+### Changed
+
+- Migrated build tooling to the official `@grafana/create-plugin` scaffold
+  (resolves `non-standard-frontend-build-tooling` review check).
+- Upgraded transitive dependencies to remove HIGH/CRITICAL vulnerabilities
+  (`serialize-javascript`, `immutable`, `js-cookie`, `uuid`, `dompurify`).
+- GitHub Actions added for CI, release and Grafana version compatibility
+  checks. Releases now provide provenance attestation.
+
+### Added
+
+- Toolbar with search, status filter, priority sort and expand/collapse all.
+- Virtualised rendering (react-window) — handles thousands of services smoothly.
+- Auto-detection of the Zabbix Services time-series wide format with optional
+  auto-grouping by name prefix.
+- `sponsor` link in `plugin.json`.
+
 ## [0.1.0] - 2026-05-24
 
 ### Added

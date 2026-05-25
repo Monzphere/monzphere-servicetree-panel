@@ -35,6 +35,10 @@
       {
         "name": "License",
         "url": "https://github.com/Monzphere/monzphere-servicetree-panel/blob/main/LICENSE"
+      },
+      {
+        "name": "sponsor",
+        "url": "https://monzphere.com"
       }
     ],
     "screenshots": [
