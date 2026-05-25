@@ -114,6 +114,32 @@ export function Select<T extends string>(props: SelectProps<T>): JSX.Element {
   );
 }
 
+export interface ComboboxProps<T = string> {
+  options: Array<{ value: T; label: string }>;
+  value?: T;
+  'aria-label'?: string;
+  placeholder?: string;
+  onChange?: (opt: { value: T; label: string } | null) => void;
+}
+export function Combobox<T extends string>(props: ComboboxProps<T>): JSX.Element {
+  return (
+    <select
+      aria-label={props['aria-label']}
+      value={String(props.value ?? '')}
+      onChange={(e) => {
+        const o = props.options.find((x) => String(x.value) === e.target.value);
+        props.onChange?.(o ?? null);
+      }}
+    >
+      {props.options.map((o) => (
+        <option key={String(o.value)} value={String(o.value)}>
+          {o.label}
+        </option>
+      ))}
+    </select>
+  );
+}
+
 export interface RadioButtonGroupProps<T = string> {
   options: Array<{ value: T; label: string }>;
   value?: T;

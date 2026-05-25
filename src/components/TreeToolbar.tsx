@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
-import { Icon, IconButton, Input, RadioButtonGroup, Select, useStyles2 } from '@grafana/ui';
+import { Combobox, Icon, IconButton, Input, RadioButtonGroup, useStyles2 } from '@grafana/ui';
 import { SortMode, StatusFilter } from '../utils/flattenTree';
 
 export interface TreeToolbarProps {
@@ -56,7 +56,7 @@ const getStyles = (theme: GrafanaTheme2) => ({
   }),
 });
 
-export function TreeToolbar(props: TreeToolbarProps): JSX.Element {
+export function TreeToolbar(props: TreeToolbarProps): React.JSX.Element {
   const styles = useStyles2(getStyles);
 
   return (
@@ -82,11 +82,11 @@ export function TreeToolbar(props: TreeToolbarProps): JSX.Element {
         />
       </div>
       <div className={styles.statusWrap}>
-        <Select
+        <Combobox<StatusFilter>
           aria-label="Filter by status"
           options={STATUS_OPTIONS}
           value={props.statusFilter}
-          onChange={(opt) => props.onStatusFilterChange((opt?.value as StatusFilter) ?? 'all')}
+          onChange={(opt) => props.onStatusFilterChange(opt?.value ?? 'all')}
         />
       </div>
       <RadioButtonGroup

@@ -88,7 +88,7 @@ function statusIconName(
   }
 }
 
-export function ServiceRow(props: ServiceRowProps): JSX.Element {
+export function ServiceRow(props: ServiceRowProps): React.JSX.Element {
   const { row, showSlaBadge, showTarget, warnThresholdPct, onToggle, style } = props;
   const { node, depth, hasChildren, expanded } = row;
   const styles = useStyles2(getStyles);

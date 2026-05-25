@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { css } from '@emotion/css';
 import { GrafanaTheme2, PanelProps } from '@grafana/data';
 import { Alert, useStyles2 } from '@grafana/ui';
@@ -48,7 +48,7 @@ const getStyles = (theme: GrafanaTheme2, width: number, height: number) => ({
   }),
 });
 
-export function ServiceTreePanel(props: Props): JSX.Element {
+export function ServiceTreePanel(props: Props): React.JSX.Element {
   const { options, data, width, height } = props;
   const styles = useStyles2((theme) => getStyles(theme, width, height));
 
@@ -83,36 +83,58 @@ export function ServiceTreePanel(props: Props): JSX.Element {
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
   const [sortMode, setSortMode] = useState<SortMode>('tree');
-  const [expandedIds, setExpandedIds] = useState<Set<string>>(() => new Set());
+  // userOverrides holds explicit expand/collapse toggles. We reset them when
+  // the tree identity changes by tracking the previous tree in state and
+  // calling setState during render — the React-recommended pattern for
+  // "resetting state when a prop changes".
+  const [userOverrides, setUserOverrides] = useState<Map<string, boolean>>(() => new Map());
+  const [trackedTree, setTrackedTree] = useState(tree);
+  let currentOverrides = userOverrides;
+  if (trackedTree !== tree) {
+    setTrackedTree(tree);
+    setUserOverrides(new Map());
+    currentOverrides = new Map();
+  }
 
-  // When the tree changes, seed expanded state from defaultExpanded option.
-  const lastSeededTree = useRef<unknown>(null);
-  useEffect(() => {
-    if (tree === lastSeededTree.current) {
-      return;
-    }
-    lastSeededTree.current = tree;
-    if (options.defaultExpanded) {
-      setExpandedIds(new Set(collectAllIds(tree)));
-    } else {
-      setExpandedIds(new Set());
-    }
-  }, [tree, options.defaultExpanded]);
-
-  const toggle = useCallback((id: string) => {
-    setExpandedIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
+  const expandedIds = useMemo(() => {
+    const all = options.defaultExpanded ? new Set(collectAllIds(tree)) : new Set<string>();
+    currentOverrides.forEach((expanded, id) => {
+      if (expanded) {
+        all.add(id);
       } else {
-        next.add(id);
+        all.delete(id);
       }
-      return next;
     });
-  }, []);
+    return all;
+  }, [tree, options.defaultExpanded, currentOverrides]);
 
-  const expandAll = useCallback(() => setExpandedIds(new Set(collectAllIds(tree))), [tree]);
-  const collapseAll = useCallback(() => setExpandedIds(new Set()), []);
+  const toggle = useCallback(
+    (id: string) => {
+      const currentlyExpanded = expandedIds.has(id);
+      setUserOverrides((prev) => {
+        const next = new Map(prev);
+        next.set(id, !currentlyExpanded);
+        return next;
+      });
+    },
+    [expandedIds]
+  );
+
+  const expandAll = useCallback(() => {
+    const next = new Map<string, boolean>();
+    for (const id of collectAllIds(tree)) {
+      next.set(id, true);
+    }
+    setUserOverrides(next);
+  }, [tree]);
+
+  const collapseAll = useCallback(() => {
+    const next = new Map<string, boolean>();
+    for (const id of collectAllIds(tree)) {
+      next.set(id, false);
+    }
+    setUserOverrides(next);
+  }, [tree]);
 
   const flat = useMemo(
     () =>

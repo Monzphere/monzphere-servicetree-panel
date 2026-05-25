@@ -94,7 +94,7 @@ function statusIconName(
   }
 }
 
-export function ServiceNode(props: ServiceNodeProps): JSX.Element {
+export function ServiceNode(props: ServiceNodeProps): React.JSX.Element {
   const { node, defaultExpanded, showSlaBadge, showTarget, warnThresholdPct, withSeparator } = props;
   const styles = useStyles2(getStyles);
   const [expanded, setExpanded] = useState<boolean>(defaultExpanded);

@@ -56,7 +56,7 @@ const getStyles = (theme: GrafanaTheme2) => ({
   }),
 });
 
-export function SLABadge({ sla, target, warnThresholdPct, showTarget }: SLABadgeProps): JSX.Element {
+export function SLABadge({ sla, target, warnThresholdPct, showTarget }: SLABadgeProps): React.JSX.Element {
   const styles = useStyles2(getStyles);
 
   const hasValue = Number.isFinite(sla);

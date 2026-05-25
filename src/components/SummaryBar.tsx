@@ -69,7 +69,7 @@ function StatusPill({
   status: ServiceStatus;
   count: number;
   styles: ReturnType<typeof getStyles>;
-}): JSX.Element | null {
+}): React.JSX.Element | null {
   if (count <= 0) {
     return null;
   }
@@ -94,7 +94,7 @@ function StatusPill({
   );
 }
 
-export function SummaryBar({ roots }: SummaryBarProps): JSX.Element {
+export function SummaryBar({ roots }: SummaryBarProps): React.JSX.Element {
   const styles = useStyles2(getStyles);
   const counts = countAll(roots);
 
